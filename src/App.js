@@ -14,22 +14,25 @@ class App extends React.Component {
     clickedArr: []
     
   }
+
+  handleOnClick = event => {
+    const images = this.state.images.map(image => image.id === event.id) ? images.clicked = true : 
+    this.setState({
+      images
+    })
+  }
   
   randomizer = () => {
     this.state.images.sort( (a,b) => {return 0.5 - Math.random()});
   };
 
   goodClick = () => {
+    this.handleOnClick()
     this.randomizer();
     this.setState({ count: this.state.count + 1
     })
     this.newBest();
-    // const clickedArr = []
-    // if (clickedArr.includes(this.state.images) === false) {
-    // clickedArr.push(this.state.images.id);
-    // console.log(clickedArr)
-    // }
-    
+
   }
 
   reset = () =>{
@@ -60,6 +63,7 @@ class App extends React.Component {
           key={images.id}
           id={images.id}
           image={images.image}
+          clicked={images.clicked}
           goodClick={this.goodClick}
 
         />
