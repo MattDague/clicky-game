@@ -6,16 +6,30 @@ import Navbar from "./components/Navbar"
 import './App.css';
 
 class App extends React.Component {
- 
+  
   state = {
     highScore: 0,
     count: 0, 
-    images
+    images, 
+    clickedArr: []
+    
   }
+  
+  randomizer = () => {
+    this.state.images.sort( (a,b) => {return 0.5 - Math.random()});
+  };
 
   goodClick = () => {
-    this.setState({ count: this.state.count +1
+    this.randomizer();
+    this.setState({ count: this.state.count + 1
     })
+    this.newBest();
+    // const clickedArr = []
+    // if (clickedArr.includes(this.state.images) === false) {
+    // clickedArr.push(this.state.images.id);
+    // console.log(clickedArr)
+    // }
+    
   }
 
   reset = () =>{
@@ -23,33 +37,30 @@ class App extends React.Component {
   }
 
   newBest = () => {
-    if (this.state.count >= this.state.highScore)
-    this.setState ({highScore: this.state.count }) 
+    if (this.state.count >= this.state.highScore) {
+    this.setState ({highScore: this.state.highScore + 1 }) }
   }
 
 
 
   render() {
-    return (<div>
+    return (
+    <div>
       <Navbar
       count ={this.state.count} 
       highScore={this.state.highScore}></Navbar>
       <Wrapper>
        
-       
-       
         
         {this.state.images.map(images => (
         
-          
         <ClickPic 
         
           name={images.name}
           key={images.id}
           id={images.id}
           image={images.image}
-          clicked={images.clicked}
-          removeFriend={this.removeFriend}
+          goodClick={this.goodClick}
 
         />
         ))}
@@ -60,3 +71,9 @@ class App extends React.Component {
 }
 
 export default App;
+
+
+
+
+
+

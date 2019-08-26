@@ -5,7 +5,7 @@ import "./style.css";
 function Navbar(props){
     return(
       
-     <nav class="navbar navbar-expand-lg bg-danger">
+     <nav className="navbar navbar-expand-lg bg-danger">
   <h1 className="nav text-light">Clicky Game!</h1>
   <div className="collapse navbar-collapse" id="navbarNav">
     <ul className="navbar-nav ml-auto text-light">

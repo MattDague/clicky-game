@@ -3,8 +3,8 @@ import "./style.css";
 
 function ClickPic(props){
     return (
-        <div className="img-container col-4">
-            <div className="click-image">
+        <div onClick={ () => props.goodClick(props.clicked)} className="img-container col-3">
+            <div className="click-image p-5">
                 <img src={props.image} alt={props.name} />
             </div>
         </div>
