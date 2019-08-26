@@ -1,9 +1,9 @@
 import React from "react";
 import "./style.css";
 
-function clickPic(props){
+function ClickPic(props){
     return (
-        <div className="container">
+        <div className="img-container col-4">
             <div className="click-image">
                 <img src={props.image} alt={props.name} />
             </div>
@@ -13,4 +13,4 @@ function clickPic(props){
 
 }
 
-export default clickPic;
+export default ClickPic;
