@@ -6,7 +6,7 @@ import Navbar from "./components/Navbar"
 import './App.css';
 
 class App extends React.Component {
-  
+  //default state of app
   state = {
     highScore: 0,
     count: 0, 
@@ -15,37 +15,65 @@ class App extends React.Component {
     
   }
 
-  handleOnClick = event => {
-    const images = this.state.images.map(image => image.id === event.id) ? images.clicked = true : 
-    this.setState({
-      images
-    })
-  }
-  
-  randomizer = () => {
-    this.state.images.sort( (a,b) => {return 0.5 - Math.random()});
+// function for when a picture is clicked
+  clickEvent = event => {
+
+    const image = event.target.id;
+    //checks to see if the id has already been clicked
+    const isClicked = this.state.clickedArr.indexOf(image) > -1;
+    //ternary check for goodclick or bad click
+    isClicked ? this.badClick() : 
+      this.goodClick() 
+      this.setState({
+        clickedArr: this.state.clickedArr.concat(image),
+      }, () => {
+        //all 12 pics are clicked
+        if (this.state.count === 12) {
+          alert("You win!");
+          this.randomizer();
+          this.reset();
+          this.newBest();
+        }
+      });
+    
   };
 
-  goodClick = () => {
-    this.handleOnClick()
+  //function for clicking an unclicked pic
+  goodClick = () =>{
+    this.setState ({
+      count: this.state.count + 1
+    });
     this.randomizer();
-    this.setState({ count: this.state.count + 1
-    })
+   
+
+  }
+  //function if picutre is already clicked 
+  badClick = () => {
+    this.randomizer();
     this.newBest();
-
+    this.reset();
+    alert("Try again!")
   }
+  //displays images from array in random order
+  randomizer = () => {
+    this.state.images.sort( (a,b) => {return 0.5 - Math.random()});
+    
+  };
 
+//game reset
   reset = () =>{
-    this.setState({ count: 0 })
-  }
+    this.setState({ count: 0,
+      clickedArr: []
 
+    })
+  }
+  //sets highscore to new value
   newBest = () => {
-    if (this.state.count >= this.state.highScore) {
-    this.setState ({highScore: this.state.highScore + 1 }) }
+    if (this.state.count > this.state.highScore) {
+    this.setState ({highScore: this.state.count}) }
   }
 
-
-
+//renders components to screen
   render() {
     return (
     <div>
@@ -64,8 +92,9 @@ class App extends React.Component {
           id={images.id}
           image={images.image}
           clicked={images.clicked}
-          goodClick={this.goodClick}
+          clickEvent={this.clickEvent}
 
+          
         />
         ))}
       </Wrapper>
@@ -75,9 +104,3 @@ class App extends React.Component {
 }
 
 export default App;
-
-
-
-
-
-
