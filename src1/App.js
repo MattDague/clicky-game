@@ -93,7 +93,6 @@ class App extends React.Component {
           image={images.image}
           clicked={images.clicked}
           clickEvent={this.clickEvent}
-
           
         />
         ))}
