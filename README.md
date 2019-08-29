@@ -1,68 +1,18 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-## Available Scripts
 
-In the project directory, you can run:
+## Clicky Game
 
-### `npm start`
+Welcome to my first project involving React which is the Clicky Game! This app was designed to use React.Js to display 12 pictures and the user can then click on each of the 12 which will increase their count! The player needs to remember which pictures they have already clicked however because the goal is to click 12 without any duplicates. If you can get all 12 without clicking the same picture twice you win.
 
-Runs the app in the development mode.<br>
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+## How it works
 
-The page will reload if you make edits.<br>
-You will also see any lint errors in the console.
+The game is created using React.Js to take in a JSON list of images and pass them as props through to the ClickPics component. For each image in the JSON array a few attributes are passed to and they are displayed on the screen with onClick functionality. The Navbar component also recieves data from the app.js file to render the current count and the high score. When the user clicks a picture the clickEvent function is called which checks to see if the image is part of the clickedArr. If the image has not been clicked then the user count goes up, the images are randomized using a function to sort each part of the image array and the game continues unless all 12 have been clicked.
 
-### `npm test`
+If the user clicks an image that has already been clicked the newBest function and reset functions are called. The newBest simply updates the state of the high score to match the current count. The reset function sets the value of count to 0 and empties the clickedArr so that no images are recognized as being part of it. This essentially brings the game back to the start so the user can try to improve their score.
 
-Launches the test runner in the interactive watch mode.<br>
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Technologies Used
 
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br>
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br>
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (Webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/code-splitting
-
-### Analyzing the Bundle Size
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size
-
-### Making a Progressive Web App
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app
-
-### Advanced Configuration
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/advanced-configuration
-
-### Deployment
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/deployment
-
-### `npm run build` fails to minify
-
-This section has moved here: https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify
+ - ReactJS
+ - NPM
+ - JavaScript
+ - BootStrap
